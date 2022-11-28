@@ -13,33 +13,101 @@
   <link rel="stylesheet" href="assets/style/main.css">
   <link rel="stylesheet" href="assets/style/style.css">
   <title>checkpoint-4</title>
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-dark navbar-expand bg-dark text-light no-select">
-      <a class="navbar-brand ms-3" href="#">
-        <img src="https://codeworks.blob.core.windows.net/public/assets/img/cw-mark.png" height="45" alt=""
-          loading="lazy">
-        <span class="ms-2">checkpoint-4</span>
-      </a>
-    </nav>
+  <header class="row">
+    <div class="text-center text-light" id="weather">
+
+    </div>
   </header>
-  <main>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div id="app"></div>
-        </div>
+  <main class="container-fluid d-flex justify-content-center">
+    <section class="row justify-content-center align-content-center">
+      <div class="col-12 d-flex rounded card">
+        <h1 id="time"></h1>
+      </div>
+    </section>
+
+
+    <!-- <section>
+      <input required type="text" minlength="3" maxlength="70" class="form-control" id="note-name"
+        placeholder="Enter Note" name="name">
+      <label for="name">Add Note</label>
+
+      <button type="submit" class="btn btn-success mt-3">Submit</button>
+      <label for="exampleColorInput" class="form-label"></label>
+      <input type="color" class="form-control form-control-color" id="color" name="color" value="#563d7c"
+        title="Choose your color">
+      </form>
+    </section> -->
+  </main>
+  <footer>
+
+    <!-- <section class="row text-light">
+
+      <div class="col-3 offset-8" id="notes">
+        <div class="container-fluid">
+          <div class="row">
+            <p>Tasks: <span id="notesCount">0</span></p>
+            <div class="col-12" id="notes"> -->
+    <!-- testing area  -->
+    <!-- //FIXME - just putting here to try and meet more requirements. -->
+
+    <div class="selectable text-light" onclick="app.notesController.setActiveNote('${this.id}')"><input type="checkbox"
+        ${this.complete ? 'checked' : '' } onchange="app.notesController.completeNote('${this.id}')" />${this.name}
+
+      <div class="col-2">
       </div>
     </div>
-  </main>
-  <footer class="bg-dark text-light">
-    <div class="text-center no-select">
-      <p><small>Made with 💖 by CodeWorks</small></p>
+    <!-- //FIXME - also just adding to page for now -->
+    <div>
+      <button class="btn btn-danger" onclick="app.notesController.deleteNote('${this.id}')"><i
+          class="mdi mdi-delete"></i></button>
+      <button class="btn btn-info" onclick="app.notesController.saveNote()"><i
+          class="mdi mdi-content-save"></i></button>
+      <textarea class="col-8 note-save" name="" id="" cols="5" rows="5">${this.task}</textarea>
     </div>
-  </footer>
+    <!-- //FIXME - this is end of templates that are inside of model and end of testing area -->
 
+
+    <!-- <form onsubmit="app.notesController.createNote()"> -->
+    <input required type="text" minlength="3" maxlength="70" class="form-control" id="notes-form" placeholder="Add Task"
+      name="name">
+    <label for="name"></label>
+
+    <button type="submit" class="btn btn-success mt-3">Submit</button>
+    <!-- </div>
+    </div>
+    </div> -->
+    <!-- <label for="exampleColorInput" class="form-label"></label>
+
+        </form>
+      </div>
+
+    </section>
+    <div class="col-8">
+      <section id="current-note" class="row">
+        <!-- <form onsubmit="app.notesController.createNote()">
+
+        </form> -->
+    </section>
+
+    </div>
+    <section class="row text-light">
+      <div class="text-center" id="quote">
+      </div>
+      <div class="text-center on-hover" id="quote-author">
+      </div>
+    </section>
+    <div class="text-light">
+      <div id="author">
+
+      </div>
+
+
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.23.0/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>

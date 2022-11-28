@@ -1,1 +1,13 @@
 /* BASIC STYLES HERE */
+body {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* .note {
+    height: 50em;
+    width: 100%;
+    text-align: left;
+} */
