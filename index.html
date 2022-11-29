@@ -36,67 +36,28 @@
     </section>
 
 
-    <!-- <section>
-      <input required type="text" minlength="3" maxlength="70" class="form-control" id="note-name"
-        placeholder="Enter Note" name="name">
-      <label for="name">Add Note</label>
 
-      <button type="submit" class="btn btn-success mt-3">Submit</button>
-      <label for="exampleColorInput" class="form-label"></label>
-      <input type="color" class="form-control form-control-color" id="color" name="color" value="#563d7c"
-        title="Choose your color">
-      </form>
-    </section> -->
+
   </main>
   <footer>
 
-    <!-- <section class="row text-light">
 
-      <div class="col-3 offset-8" id="notes">
-        <div class="container-fluid">
-          <div class="row">
-            <p>Tasks: <span id="notesCount">0</span></p>
-            <div class="col-12" id="notes"> -->
-    <!-- testing area  -->
-    <!-- //FIXME - just putting here to try and meet more requirements. -->
-
-    <div class="selectable text-light" onclick="app.notesController.setActiveNote('${this.id}')"><input type="checkbox"
-        ${this.complete ? 'checked' : '' } onchange="app.notesController.completeNote('${this.id}')" />${this.name}
-
-      <div class="col-2">
-      </div>
-    </div>
     <!-- //FIXME - also just adding to page for now -->
-    <div>
-      <button class="btn btn-danger" onclick="app.notesController.deleteNote('${this.id}')"><i
-          class="mdi mdi-delete"></i></button>
-      <button class="btn btn-info" onclick="app.notesController.saveNote()"><i
-          class="mdi mdi-content-save"></i></button>
-      <textarea class="col-8 note-save" name="" id="" cols="5" rows="5">${this.task}</textarea>
-    </div>
+
     <!-- //FIXME - this is end of templates that are inside of model and end of testing area -->
-
-
-    <!-- <form onsubmit="app.notesController.createNote()"> -->
-    <input required type="text" minlength="3" maxlength="70" class="form-control" id="notes-form" placeholder="Add Task"
-      name="name">
-    <label for="name"></label>
-
-    <button type="submit" class="btn btn-success mt-3">Submit</button>
-    <!-- </div>
-    </div>
-    </div> -->
-    <!-- <label for="exampleColorInput" class="form-label"></label>
-
-        </form>
+    <section class="row text-light">
+      <div class="d-flex"> incomplete- <div class="col-1" id="incomplete"></div>
       </div>
+      <div class="col-11" id="notes"></div>
 
     </section>
-    <div class="col-8">
-      <section id="current-note" class="row">
-        <!-- <form onsubmit="app.notesController.createNote()">
 
-        </form> -->
+    <form onsubmit="app.notesController.createNote()">
+      <input required type="text" minlength="3" maxlength="70" class="form-control" id="description"
+        placeholder="Add Task" name="description">
+      <label for="name"></label>
+      <button class="btn btn-success mt-3">Submit</button>
+    </form>
     </section>
 
     </div>

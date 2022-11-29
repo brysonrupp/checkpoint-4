@@ -15,12 +15,11 @@ class AppState extends EventEmitter {
   quote = null
   weather = null
   // notes = loadState('notes', [Note])
-  /** @type {import('./Models/note').note[]} */
+  /** @type {import('./Models/Note').Note[]} */
   //FIXME - added notes for listening changing from [] and null. [] makes templates dissapear
   notes = []
 
-  /** @type {import('./Models/Note').Note|null} */
-  activeNote = null
+
 }
 
 export const appState = new Proxy(new AppState(), {

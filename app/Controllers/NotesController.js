@@ -12,39 +12,26 @@ function _drawNotes() {
     setHTML('notes', template)
 }
 
-function _drawNoteForm() {
-    let note = appState.activeNote
-    setHTML('notes-form', Note.GetNoteFormTemplate(note))
-}
 
 
-//FIXME - might need to come back to this commenting out for now
-// function _drawActiveNote() {
-//     console.log('drawing active note', appState.activeNote);
-//     if (appState.activeNote) {
-//         let activeNote = appState.activeNote
-//         setHTML('current-note', activeNote.ActiveTemplate)
-//     }
 
 
 
 
 
 function _drawNotesCount() {
-    let count = appState.notes.length
-    console.log(document.getElementById('notesCount'))
-    setHTML('notesCount', count.toString())
+    let incomplete = appState.notes.filter(i => i.completed == false).length
+    setHTML('incomplete', incomplete)
 }
 
 export class NotesController {
     constructor() {
         appState.on('notes', _drawNotes)
-        appState.on('activeNote', _drawNoteForm)
+
         appState.on('notes', _drawNotesCount)
         this.getNotes()
-        _drawNoteForm()
-        _drawNotes()
-        _drawNotesCount()
+
+
     }
 
 
@@ -56,11 +43,11 @@ export class NotesController {
             console.error(error)
         }
     }
-    async removeNote(Id) {
+    async removeNote(id) {
         try {
             console.log('deleting', id);
             if (await Pop.confirm('do you want to delete this note?')) {
-                await notesService.removeNote(Id)
+                await notesService.removeNote(id)
             }
         } catch (error) {
             Pop.error(error.message)
@@ -78,34 +65,52 @@ export class NotesController {
         }
     }
 
-    createNote() {
+    async createNote() {
         window.event.preventDefault()
         let form = window.event.target
         let formData = getFormData(form)
-        notesService.createNote(formData)
+        console.log(formData)
+        await notesService.createNote(formData)
         form.reset()
     }
 
-    setActive(id) {
-        notesService.setActive(id)
-    }
-
-    async editCar(id) {
-        try {
-            window.event.preventDefault()
-            const form = window.event.target
-            const noteData = getFormData(form)
-            console.log('editing', form);
-            await notesService.editNote(noteData, id)
-            Pop.toast('edited', 'info')
-            form.reset()
-        } catch (error) {
-            Pop.error(error.message)
-            console.error(error)
-        }
-    }
+}
 
 
+
+
+
+
+
+
+
+    // setActive(id) {
+    //     notesService.setActive(id)
+    // }
+
+    // async editCar(id) {
+    //     try {
+    //         window.event.preventDefault()
+    //         const form = window.event.target
+    //         const noteData = getFormData(form)
+    //         console.log('editing', form);
+    //         await notesService.editNote(noteData, id)
+    //         Pop.toast('edited', 'info')
+    //         form.reset()
+    //     } catch (error) {
+    //         Pop.error(error.message)
+    //         console.error(error)
+    //     }
+    // }
+
+
+//FIXME - might need to come back to this commenting out for now
+// function _drawActiveNote() {
+//     console.log('drawing active note', appState.activeNote);
+//     if (appState.activeNote) {
+//         let activeNote = appState.activeNote
+//         setHTML('current-note', activeNote.ActiveTemplate)
+//     }
     //FIXME - commenting out for now
     //     saveNote() {
     //         // window.event.preventDefault()
@@ -115,6 +120,6 @@ export class NotesController {
     //         console.log(newNote, 'saving note');
 
     //     }
-}
+
 
 
